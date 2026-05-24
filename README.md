@@ -2,8 +2,8 @@
 
 <img src="https://img.shields.io/badge/LocalMind-v2.0.0-7C3AED?style=for-the-badge&logoColor=white" />
 
-# 🧠 LocalMind v2.0
-### Offline AI Assistant — Chat with Your Documents. Privately.
+# LocalMind v2.0
+### Offline AI Assistant - Chat with Your Documents. Privately.
 
 **No cloud. No API key. No data leaks. Runs 100% on your machine.**
 
@@ -17,46 +17,46 @@
 
 <br/>
 
-[🚀 Quick Start](#-quick-start) · [✨ Features](#-features) · [🛠 Tech Stack](#-tech-stack) · [🤝 Contributing](#-contributing) · [📸 Screenshots](#-screenshots)
+[Quick Start](#quick-start) · [Features](#features) · [Tech Stack](#tech-stack) · [Contributing](#contributing) · [Screenshots](#screenshots)
 
 ---
 
 </div>
 
-## ✨ What's New in v2.0
+## What's New in v2.0
 
 | Feature | Description |
 |---------|-------------|
-| ⚡ **Streaming Responses** | See AI reply token-by-token in real time |
-| 🔌 **Plugin System** | Calculator, Word Counter, JSON Formatter, Code Runner, Summarizer |
-| 🌐 **8 Languages** | English, Hindi, Tamil, Telugu, Kannada, French, German, Spanish |
-| 📤 **Export Chats** | Download conversations as Markdown, JSON, or TXT |
-| 🗂 **Session Manager** | Full CRUD — create, rename, search, delete chat sessions |
-| ⚙️ **Settings Panel** | Temperature, RAG chunks, model, theme, language |
-| 🐳 **Docker v2** | Health checks, persistent volumes, nginx reverse proxy |
-| 🧪 **30+ Tests** | Full pytest suite with mocked Ollama |
+| Streaming Responses | See AI reply token-by-token in real time |
+| Plugin System | Calculator, Word Counter, JSON Formatter, Code Runner, Summarizer |
+| 8 Languages | English, Hindi, Tamil, Telugu, Kannada, French, German, Spanish |
+| Export Chats | Download conversations as Markdown, JSON, or TXT |
+| Session Manager | Full CRUD - create, rename, search, delete chat sessions |
+| Settings Panel | Temperature, RAG chunks, model, theme, language |
+| Docker v2 | Health checks, persistent volumes, nginx reverse proxy |
+| 30+ Tests | Full pytest suite with mocked Ollama |
 
 ---
 
-## ✨ All Features
+## All Features
 
 | Feature | Status |
 |---------|--------|
-| 🏠 Fully Offline (Ollama) | ✅ |
-| 📄 PDF / TXT / CSV / DOCX / MD / HTML upload | ✅ |
-| 🧠 RAG — Chat with Documents | ✅ |
-| ⚡ Streaming Responses (SSE) | ✅ |
-| 🤖 Multi-Model (Llama3, Mistral, Phi3, Gemma, DeepSeek) | ✅ |
-| 🌐 8 UI Languages | ✅ |
-| 💬 Chat History (SQLite) | ✅ |
-| 🗂 Session Manager (CRUD) | ✅ |
-| 🔍 Session Search | ✅ |
-| 🔌 Plugin System (6 plugins) | ✅ |
-| 📤 Export (MD / JSON / TXT) | ✅ |
-| ⚙️ Settings Panel | ✅ |
-| 🐳 Docker Compose | ✅ |
-| 🧪 30+ Tests | ✅ |
-| 🔒 Zero telemetry | ✅ |
+| Fully Offline (Ollama) | Included |
+| PDF / TXT / CSV / DOCX / MD / HTML upload | Included |
+| RAG — Chat with Documents | Included |
+| Streaming Responses (SSE) | Included |
+| Multi-Model (Llama3, Mistral, Phi3, Gemma, DeepSeek) | Included |
+| 8 UI Languages | Included |
+| Chat History (SQLite) | Included |
+| Session Manager (CRUD) | Included |
+| Session Search | Included |
+| Plugin System (6 plugins) | Included |
+| Export (MD / JSON / TXT) | Included |
+| Settings Panel | Included |
+| Docker Compose | Included |
+| 30+ Tests | Included |
+| Zero telemetry | Included |
 
 ---
 
@@ -66,23 +66,23 @@
 ┌────────────────────────────────────────────────┐
 │               LocalMind v2.0                   │
 ├──────────────┬─────────────────────────────────┤
-│  Frontend    │  React 18 + Tailwind + Vite      │
-│  Backend     │  Python 3.11 + FastAPI           │
-│  AI Engine   │  Ollama (local LLM)              │
-│  RAG         │  LangChain + ChromaDB            │
-│  Embeddings  │  sentence-transformers (local)   │
-│  Database    │  SQLite (100% local)             │
-│  Streaming   │  Server-Sent Events (SSE)        │
-│  Deploy      │  Docker Compose + nginx          │
-│  Testing     │  pytest + TestClient             │
+│  Frontend    │  React 18 + Tailwind + Vite     │
+│  Backend     │  Python 3.11 + FastAPI          │
+│  AI Engine   │  Ollama (local LLM)             │
+│  RAG         │  LangChain + ChromaDB           │
+│  Embeddings  │  sentence-transformers (local)  │
+│  Database    │  SQLite (100% local)            │
+│  Streaming   │  Server-Sent Events (SSE)       │
+│  Deploy      │  Docker Compose + nginx         │
+│  Testing     │  pytest + TestClient            │
 └──────────────┴─────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### Option 1 — Docker (Recommended, 3 commands)
+### Option 1 - Docker (Recommended, 3 commands)
 
 ```bash
 # 1. Pull a model (one-time, ~4GB)
@@ -96,7 +96,7 @@ cd localmind && docker compose up
 open http://localhost:3000
 ```
 
-### Option 2 — Manual Setup
+### Option 2 - Manual Setup
 
 ```bash
 git clone https://github.com/yourusername/localmind.git
@@ -135,7 +135,7 @@ The included `render.yaml` defines a backend web service and a frontend static s
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 localmind/
@@ -184,20 +184,20 @@ localmind/
 
 ---
 
-## 🔌 Plugins
+## Plugins
 
 | Plugin | Description |
 |--------|-------------|
-| 🧮 Calculator | Safe math evaluator (supports `sqrt`, `log`, `sin`, etc.) |
-| 📝 Summarizer | Extractive summary of long text |
-| 🔢 Word Counter | Words, chars, sentences, paragraphs |
+| Calculator | Safe math evaluator (supports `sqrt`, `log`, `sin`, etc.) |
+| Summarizer | Extractive summary of long text |
+| Word Counter | Words, chars, sentences, paragraphs |
 | {} JSON Formatter | Validate and pretty-print JSON |
-| ⚡ Code Runner | Run Python snippets in a sandbox |
-| 🌐 Translator | Language detection + translation via LocalMind |
+| Code Runner | Run Python snippets in a sandbox |
+| Translator | Language detection + translation via LocalMind |
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 cd backend
@@ -220,12 +220,11 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 ---
 
-## 📄 License
+## License
 
-MIT © 2026 — Made with ❤️ for [Social Summer of Code 2026](https://ssoc.dev)
-
+MIT © 2026
 <div align="center">
 
-⭐ **If LocalMind helped you, please star the repo!** ⭐
+If LocalMind helped you, please star the repo. ⭐✨🚀
 
 </div>
