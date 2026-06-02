@@ -8,7 +8,7 @@ const LANGUAGES = [
   {code:"de",label:"Deutsch"},{code:"es",label:"Español"},
 ];
 
-export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSession, onDeleteSession, model, models, onModelChange, language, onLanguageChange }) {
+export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSession, onDeleteSession, onClearAllSessions, model, models, onModelChange, language, onLanguageChange }) {
   const [search, setSearch] = useState("");
   const modelList = models.length > 0 ? models.map(m=>m.name) : ["llama3","mistral","phi3","gemma2"];
   const filtered  = sessions.filter(s => s.title?.toLowerCase().includes(search.toLowerCase()));
@@ -82,6 +82,22 @@ export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSes
           </div>
         ))}
       </div>
+
+      {sessions.length > 0 && (
+        <div className="px-3 py-2 border-t border-gray-800 shrink-0">
+          <button
+            onClick={() => {
+              if (window.confirm("Delete all sessions? This cannot be undone.")) {
+                onClearAllSessions();
+              }
+            }}
+            className="w-full text-left text-xs text-gray-500 hover:text-red-400 hover:bg-red-950/20 px-3 py-2 rounded-lg transition inline-flex items-center gap-2 font-medium"
+          >
+            <span>🗑</span>
+            <span>Clear all sessions</span>
+          </button>
+        </div>
+      )}
 
       {/* Footer */}
       <div className="px-4 py-3 border-t border-gray-800">
