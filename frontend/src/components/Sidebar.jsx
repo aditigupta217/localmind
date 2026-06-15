@@ -28,6 +28,7 @@ export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSes
 
   const handleContextMenu = (e, sessionId) => {
     e.preventDefault();
+    e.stopPropagation();
     const menuWidth = 190;
     const menuHeight = 40;
     let x = e.clientX;
@@ -129,6 +130,7 @@ export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSes
           className="fixed z-50 bg-gray-800 border border-gray-700 rounded-lg shadow-xl p-2 flex gap-1.5"
           style={{ top: `${contextMenu.y}px`, left: `${contextMenu.x}px` }}
           onClick={(e) => e.stopPropagation()}
+          onContextMenu={(e) => { e.preventDefault(); e.stopPropagation(); }}
         >
           {PALETTE.map((color) => (
             <button
