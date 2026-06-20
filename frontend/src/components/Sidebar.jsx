@@ -14,6 +14,46 @@ export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSes
   const [search, setSearch] = useState("");
   const [contextMenu, setContextMenu] = useState(null); // { sessionId, x, y }
 
+  const [isResizing, setIsResizing] = useState(false);
+  const [width, setWidth] = useState(() => {
+    const saved = localStorage.getItem("sidebarWidth");
+    let w = saved !== null && !isNaN(parseInt(saved, 10)) ? parseInt(saved, 10) : 280;
+    if (w < 10) w = 10;
+    if (w > window.innerWidth - 10) w = window.innerWidth - 10;
+    return w;
+  });
+
+  useEffect(() => {
+    if (!isResizing) return;
+    
+    const handleMouseMove = (e) => {
+      let newWidth = e.clientX;
+      if (newWidth < 10) newWidth = 10;
+      if (newWidth > window.innerWidth - 10) newWidth = window.innerWidth - 10;
+      setWidth(newWidth);
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.body.style.userSelect = "none";
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.body.style.userSelect = "";
+    };
+  }, [isResizing]);
+
+  useEffect(() => {
+    if (!isResizing) {
+      localStorage.setItem("sidebarWidth", width);
+    }
+  }, [isResizing, width]);
+
   const modelList = models.length > 0 ? models.map(m=>m.name) : ["llama3","mistral","phi3","gemma2"];
   const filtered  = sessions.filter(s => s.title?.toLowerCase().includes(search.toLowerCase()));
 
@@ -40,7 +80,15 @@ export default function Sidebar({ sessions, currentSession, onNewChat, onLoadSes
   };
 
   return (
-    <div className="w-64 flex flex-col bg-gray-900 border-r border-gray-800 shrink-0">
+    <div 
+      className="relative flex flex-col bg-gray-900 border-r border-gray-800 shrink-0 overflow-x-hidden transition-[width] duration-0"
+      style={{ width: `${width}px` }}
+    >
+      {/* Drag handle */}
+      <div 
+        onMouseDown={() => setIsResizing(true)}
+        className="absolute top-0 right-0 w-[5px] h-full cursor-col-resize hover:bg-purple-500/50 z-50 transition-colors"
+      />
       {/* Logo */}
       <div className="px-4 pt-5 pb-4 border-b border-gray-800">
         <div className="flex items-center gap-2 mb-4">
